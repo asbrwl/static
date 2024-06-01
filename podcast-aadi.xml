@@ -1,4 +1,5 @@
-<rss xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:googleplay="http://www.google.com/schemas/play-podcasts/1.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:podcast="https://podcastindex.org/namespace/1.0" version="2.0">
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:googleplay="http://www.google.com/schemas/play-podcasts/1.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:podcast="https://podcastindex.org/namespace/1.0" >
     <channel>
     	<podcast:locked>no</podcast:locked>
         <generator>asabharwal.com</generator>
@@ -13,10 +14,10 @@
             A podcast that examines the history and the folklore of the world's oldest religion - Hinduism.
         </description>
         <language>en-in</language>
-        <copyright>2024 Akhilesh Sabharwal </copyright>
+        <copyright>{{ now.Format "2006"}} Akhilesh Sabharwal </copyright>
         <atom:link href="https://asabharwal.com/podcasts-aadi.xml" rel="self" type="application/rss+xml"/>
-        <lastBuildDate>Thu, 16 May 2024 00:00:05 +0530</lastBuildDate>
-        <itunes:author></itunes:author>
+        <lastBuildDate>{{ .Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</lastBuildDate>
+        <itunes:author>{{ .Site.Params.podcasts_author }}</itunes:author>
         <googleplay:author>Akhilesh Sabharwal</googleplay:author>
         <googleplay:email>comments@asabharwal.com</googleplay:email>
         <googleplay:description>A podcast that examines the history and the folklore of the world's oldest religion - Hinduism.</googleplay:description>
@@ -33,93 +34,36 @@
         <itunes:image href="https://asabharwal.com/img/aadi-series-cover.jpg"/>
         <googleplay:image href="https://asabharwal.com/img/aadi-series-cover.jpg"/>
         <itunes:category text="Religion &amp; Spirituality"/>
-        <pubDate>Thu, 16 May 2024 00:00:05 +0530</pubDate>
-        
+        <pubDate>{{ .Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</pubDate>
+        {{ range $pages }}
         <item>
-    		<title>The Birth of Life</title>
-		    <link>https://asabharwal.com//aadi/ep-03-creation-of-life/</link>
-    		<pubDate>Mon, 11 Jul 2022 23:15:08 +0530</pubDate>
-    		<itunes:season>2022</itunes:season>
+    		<title>{{ .Title }}</title>
+		    <link>{{ .Permalink }}</link>
+    		<pubDate>{{ .Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</pubDate>
+    		<itunes:season>{{ .Date.Format "2006" | safeHTML }}</itunes:season>
    			<description>
-   				How did the plants and animals of the world come to life? Who created man and gave him the dominion of the earth? Did a divinity create these, or cause them into being? Let&#39;s explore the creation of life and evolution in this chapter of Aadi.
+   				{{ .Params.episodesummary  | plainify }}
    			</description>
-   			<enclosure url="https://media.asabharwal.com/audio/aadi/aadi-episode-03-the-birth-of-life.mp3" length="29806079" type="audio/mpeg"/>
+   			<enclosure url="{{ absURL .Params.episodeaudio }}" length="{{ .Params.episodelength }}" type="audio/mpeg"/>
    			<guid>
-   			    https://media.asabharwal.com/audio/aadi/aadi-episode-03-the-birth-of-life.mp3
+   			    {{ absURL .Params.episodeaudio }}
    			</guid>
-   			<itunes:title>The Birth of Life</itunes:title>
+   			<itunes:title>{{ .Title }}</itunes:title>
    			<itunes:author>Akhilesh Sabharwal</itunes:author>
-   			<itunes:episode>3</itunes:episode>
-   			<itunes:duration>00:30:22</itunes:duration>
+   			<itunes:episode>{{ .Params.episodeno }}</itunes:episode>
+   			<itunes:duration>{{ .Params.episodeduration }}</itunes:duration>
    			<itunes:summary>
-   			    How did the plants and animals of the world come to life? Who created man and gave him the dominion of the earth? Did a divinity create these, or cause them into being? Let&#39;s explore the creation of life and evolution in this chapter of Aadi.
+   			    {{ .Params.episodesummary }}
    			</itunes:summary>
-   			<itunes:image href="https://asabharwal.com//img/aadi-cover.jpg"/>
+   			<itunes:image href="{{ absURL .Params.episodeimage }}"/>
    			<itunes:keywords>
-   			    Exploring Hinduism, Creation of Life, Evolution, Science in Hinduism
+   			    {{ .Params.episodekeywords }}
    			</itunes:keywords>
-   			<itunes:explicit>no</itunes:explicit>
-   			<googleplay:description>How did the plants and animals of the world come to life? Who created man and gave him the dominion of the earth? Did a divinity create these, or cause them into being? Let&#39;s explore the creation of life and evolution in this chapter of Aadi.</googleplay:description> 	
-			<googleplay:image href="https://asabharwal.com//img/aadi-cover.jpg"></googleplay:image>
-			<googleplay:explicit>no</googleplay:explicit>
+   			<itunes:explicit>{{.Params.explicit }}</itunes:explicit>
+   			<googleplay:description>{{ .Params.episodesummary  | plainify }}</googleplay:description> 	
+			<googleplay:image href="{{ absURL .Params.episodeimage }}"></googleplay:image>
+			<googleplay:explicit>{{ .Params.explicit }}</googleplay:explicit>
 		</item>
-		
-        <item>
-    		<title>Creation and Origin</title>
-		    <link>https://asabharwal.com//aadi/ep-2-creation-and-origin/</link>
-    		<pubDate>Sun, 10 Apr 2022 00:00:00 +0000</pubDate>
-    		<itunes:season>2022</itunes:season>
-   			<description>
-   				Who created the universe? Was it a supreme being or something else? Is there a natural phenomenon behind creation? The answers to this and more as we discuss the creation of the world in this chapter of Aadi.
-   			</description>
-   			<enclosure url="https://media.asabharwal.com/audio/aadi/episode-2-creation-and-origin.mp3" length="15721870" type="audio/mpeg"/>
-   			<guid>
-   			    https://media.asabharwal.com/audio/aadi/episode-2-creation-and-origin.mp3
-   			</guid>
-   			<itunes:title>Creation and Origin</itunes:title>
-   			<itunes:author>Akhilesh Sabharwal</itunes:author>
-   			<itunes:episode>2</itunes:episode>
-   			<itunes:duration>00:16:22</itunes:duration>
-   			<itunes:summary>
-   			    Who created the universe? Was it a supreme being or something else? Is there a natural phenomenon behind creation? The answers to this and more as we discuss the creation of the world in this chapter of Aadi.
-   			</itunes:summary>
-   			<itunes:image href="https://asabharwal.com//img/aadi-cover.jpg"/>
-   			<itunes:keywords>
-   			    Hinduism, Creation and Origins,
-   			</itunes:keywords>
-   			<itunes:explicit>no</itunes:explicit>
-   			<googleplay:description>Who created the universe? Was it a supreme being or something else? Is there a natural phenomenon behind creation? The answers to this and more as we discuss the creation of the world in this chapter of Aadi.</googleplay:description> 	
-			<googleplay:image href="https://asabharwal.com//img/aadi-cover.jpg"></googleplay:image>
-			<googleplay:explicit>no</googleplay:explicit>
-		</item>
-		
-        <item>
-    		<title>Genesis</title>
-		    <link>https://asabharwal.com//aadi/ep-1-genesis/</link>
-    		<pubDate>Sun, 27 Feb 2022 00:00:00 +0000</pubDate>
-    		<itunes:season>2022</itunes:season>
-   			<description>
-   				India&#39;s recorded history is one of the oldest and longest in the course of world history. The civilisations that formed on the banks of it&#39;s mighty rivers have given rise to a rich history, that spans time and space. It&#39;s unique geography and access to the sea have earned it the moniker of the subcontinent, and to many of it&#39;s people it gave a religion, but more than that a philosophy to a way of life. It created the Hindu.
-   			</description>
-   			<enclosure url="https://media.asabharwal.com/audio/aadi/episode-1-genesis.mp3" length="25712767" type="audio/mpeg"/>
-   			<guid>
-   			    https://media.asabharwal.com/audio/aadi/episode-1-genesis.mp3
-   			</guid>
-   			<itunes:title>Genesis</itunes:title>
-   			<itunes:author>Akhilesh Sabharwal</itunes:author>
-   			<itunes:episode>1</itunes:episode>
-   			<itunes:duration>00:26:46</itunes:duration>
-   			<itunes:summary>
-   			    India&#39;s recorded history is one of the oldest and longest in the course of world history. The civilisations that formed on the banks of it&#39;s mighty rivers have given rise to a rich history, that spans time and space. It&#39;s unique geography and access to the sea have earned it the moniker of the subcontinent, and to many of it&#39;s people it gave a religion, but more than that a philosophy to a way of life. It created the Hindu.
-   			</itunes:summary>
-   			<itunes:image href="https://asabharwal.com//img/aadi-cover.jpg"/>
-   			<itunes:keywords>
-   			    Hinduism, Beginning
-   			</itunes:keywords>
-   			<itunes:explicit>no</itunes:explicit>
-   			<googleplay:description>India&#39;s recorded history is one of the oldest and longest in the course of world history. The civilisations that formed on the banks of it&#39;s mighty rivers have given rise to a rich history, that spans time and space. It&#39;s unique geography and access to the sea have earned it the moniker of the subcontinent, and to many of it&#39;s people it gave a religion, but more than that a philosophy to a way of life. It created the Hindu.</googleplay:description> 	
-			<googleplay:image href="https://asabharwal.com//img/aadi-cover.jpg"></googleplay:image>
-			<googleplay:explicit>no</googleplay:explicit>
-		</item>
+		{{ end }}
     </channel>
 </rss>
